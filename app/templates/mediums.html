@@ -1,0 +1,117 @@
+
+{% extends "base.html" %}
+
+{% block title %}Art Mediums — Art Idea Organizer{% endblock %}
+
+{% block content %}
+<section class="archive">
+    <header class="archive-header">
+        <a class="text-link back-link" href="{{ url_for('main.index') }}">
+            &larr; Back to archive
+        </a>
+
+        <h1 class="page-title">
+            <span class="script-accent">
+                Your mediums
+            </span>
+        </h1>
+
+        <p>Keep track of the materials and techniques you work with.</p>
+    </header>
+
+    <section class="medium-create">
+        <h2>Add a medium</h2>
+
+        <form action="{{ url_for('mediums.create') }}" method="post">
+            <label for="medium-name">Medium name</label>
+
+            <div class="medium-create__controls">
+                <input
+                    id="medium-name"
+                    name="name"
+                    type="text"
+                    maxlength="80"
+                    placeholder="e.g. Watercolor"
+                    required
+                >
+
+                <button class="button button--primary" type="submit">
+                    Add medium
+                </button>
+            </div>
+        </form>
+    </section>
+
+    <section class="medium-list">
+        <h2>Your mediums <span>({{ mediums|length }})</span></h2>
+
+        {% if mediums %}
+            <div class="medium-list__items">
+                {% for medium in mediums %}
+                    <article class="medium-item">
+                        <span class="medium-item__name" data-medium-name>
+                            {{ medium.name }}
+                        </span>
+
+                        <form
+                            class="medium-item__edit-form"
+                            action="{{ url_for('mediums.edit', medium_id=medium.id) }}"
+                            method="post"
+                            hidden
+                        >
+                            <input
+                                type="text"
+                                name="name"
+                                value="{{ medium.name }}"
+                                maxlength="80"
+                                aria-label="Edit medium name"
+                                required
+                            >
+
+                            <button class="button button--primary" type="submit">
+                                Save
+                            </button>
+
+                            <button
+                                class="button button--secondary"
+                                type="button"
+                                data-cancel-edit
+                            >
+                                Cancel
+                            </button>
+                        </form>
+
+                        <div class="medium-item__actions">
+                            <button
+                                class="button button--secondary"
+                                type="button"
+                                data-edit-medium
+                            >
+                                Edit
+                            </button>
+
+                            <form
+                                action="{{ url_for('mediums.delete', medium_id=medium.id) }}"
+                                method="post"
+                                onsubmit="return confirm('Delete this medium? Ideas will be kept, but this medium will be unassigned.');"
+                            >
+                                <button
+                                    class="button button--danger"
+                                    type="submit"
+                                    aria-label="Delete {{ medium.name }}"
+                                >
+                                    Remove
+                                </button>
+                            </form>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="form-help">
+                You haven't added any mediums yet. Add your first one above.
+            </p>
+        {% endif %}
+    </section>
+</section>
+{% endblock %}

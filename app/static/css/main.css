@@ -1,0 +1,809 @@
+
+/* ==================================================
+   1. TYPOGRAPHY & PAGE HEADINGS
+================================================== */
+
+.eyebrow {
+    margin: 0 0 18px;
+    color: var(--color-text-secondary);
+    font-family: sans-serif;
+    font-size: var(--text-size-xs);
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+}
+
+h1, h2, h3, p {
+    overflow-wrap: anywhere;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.04em;
+}
+
+.script-accent {
+    color: var(--color-pink-dark);
+    font-family: var(--font-script);
+    font-size: 1.3em;
+    font-weight: 400;
+    letter-spacing: 0;
+}
+
+.page-title {
+    margin: 0;
+    font-size: clamp(38px, 6vw, 60px);
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.archive-intro,
+.form-intro {
+    max-width: 500px;
+    margin: 20px 0 0;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+}
+
+
+/* ==================================================
+   2. ARCHIVE PAGE LAYOUT
+================================================== */
+
+.archive {
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding-bottom: 80px;
+}
+
+.archive-header {
+    max-width: 760px;
+    padding: clamp(40px, 6vw, 64px) 0 48px;
+}
+
+.archive-header > p:not(.eyebrow) {
+    max-width: 500px;
+    margin: 20px 0 0;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 36px;
+}
+
+.text-link {
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-sm);
+    text-decoration: none;
+    transition: color var(--transition-standard);
+}
+
+.text-link:hover {
+    color: var(--color-accent);
+}
+
+
+/* ==================================================
+   3. ARCHIVE SEARCH & FILTERS
+================================================== */
+
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 36px;
+}
+
+.search-form input {
+    flex: 1;
+    min-width: 0;
+}
+
+.archive-toolbar {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: var(--border-thin);
+}
+
+.archive-toolbar h2,
+.detail-section h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.result-count,
+.muted-text,
+.detail-date {
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-sm);
+}
+
+
+/* ==================================================
+   4. IDEA GRID & CARDS
+================================================== */
+
+.idea-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.idea-card {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    padding: 28px;
+    border: var(--border-thin);
+    background: var(--color-surface);
+    transition:
+        border-color var(--transition-standard),
+        transform var(--transition-standard);
+}
+
+.idea-card:hover {
+    border-color: var(--color-pink);
+    transform: translateY(-2px);
+}
+
+.idea-card__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-xs);
+}
+
+.idea-card h3 {
+    margin: 28px 0 10px;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.idea-card h3 a {
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: color var(--transition-standard);
+}
+
+.idea-card h3 a:hover {
+    color: var(--color-accent);
+}
+
+.idea-card__description {
+    display: -webkit-box;
+    overflow: hidden;
+    margin: 0 0 24px;
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-sm);
+    line-height: 1.7;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+}
+
+.idea-card .tag-list {
+    margin-top: auto;
+    padding-top: 8px;
+}
+
+.idea-card__link {
+    align-self: flex-start;
+    margin-top: 24px;
+}
+
+
+/* ==================================================
+   5. EMPTY STATES
+================================================== */
+
+.empty-state {
+    padding: 64px 24px;
+    border: 1px dashed var(--color-border);
+    text-align: center;
+}
+
+.empty-state__title {
+    margin: 0 0 8px;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.empty-state > p:not(.empty-state__title) {
+    margin: 0 0 24px;
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-sm);
+    line-height: 1.7;
+}
+
+
+/* ==================================================
+   6. COLLECTIONS PAGE
+================================================== */
+
+/* Creation form */
+
+.collection-create {
+    max-width: 680px;
+    margin: 0 0 64px;
+    padding: 28px 32px 32px;
+    border: var(--border-thin);
+    background: var(--color-surface);
+}
+
+.collection-create h2,
+.medium-create h2 {
+    margin: 0 0 24px;
+    font-size: 21px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.collection-create form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.collection-create label,
+.medium-create label {
+    margin-top: 8px;
+    color: var(--color-text-primary);
+    font-size: var(--text-size-sm);
+}
+
+.collection-create input,
+.collection-create textarea {
+    width: 100%;
+    max-width: 100%;
+}
+
+.collection-create textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.collection-create button {
+    margin-top: 12px;
+}
+
+/* Saved collections */
+
+.collection-list {
+    display: block;
+    width: 100%;
+    margin-top: 0;
+}
+
+.collection-list > h2,
+.medium-list > h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0 0 24px;
+    padding-bottom: 16px;
+    border-bottom: var(--border-thin);
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.collection-list > h2 span,
+.medium-list > h2 span {
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-sm);
+}
+
+/* Collection card grid */
+
+.collection-list .destination-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    width: 100%;
+}
+
+.collection-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    padding: 26px 28px;
+    border: var(--border-thin);
+    background: var(--color-surface);
+    transition:
+        border-color var(--transition-standard),
+        transform var(--transition-standard);
+}
+
+.collection-card:hover {
+    border-color: var(--color-pink);
+    transform: translateY(-2px);
+}
+
+.collection-card h3 {
+    margin: 0 0 12px;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.collection-card > p:not(.collection-count) {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-sm);
+    line-height: 1.8;
+}
+
+.collection-card .collection-count {
+    margin: auto 0 20px;
+    padding-top: 28px;
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-xs);
+    letter-spacing: 0.04em;
+}
+
+.collection-card form {
+    margin-top: auto;
+}
+
+.collection-card .button--secondary {
+    font-size: var(--text-size-xs);
+}
+
+
+/* ==================================================
+   7. MEDIUMS PAGE
+================================================== */
+
+/* Add-medium form */
+
+.medium-create {
+    max-width: 680px;
+    margin: 0 0 64px;
+    padding: 28px 32px 32px;
+    border: var(--border-thin);
+    background: var(--color-surface);
+}
+
+.medium-create form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.medium-create__controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.medium-create__controls input {
+    flex: 1;
+    min-width: 0;
+}
+
+.medium-create__controls button {
+    flex-shrink: 0;
+}
+
+/* Medium list */
+
+.medium-list {
+    margin-top: 0;
+}
+
+.medium-list__items {
+    display: flex;
+    flex-direction: column;
+    border-top: var(--border-thin);
+}
+
+/* Individual medium row */
+
+.medium-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    min-width: 0;
+    padding: 20px 4px;
+    border-bottom: var(--border-thin);
+    transition: padding var(--transition-standard);
+}
+
+.medium-item:hover {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.medium-item__name {
+    min-width: 0;
+    color: var(--color-text-primary);
+    font-size: 17px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+/* Inline editing */
+
+.medium-item__edit-form {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.medium-item__edit-form[hidden] {
+    display: none;
+}
+
+.medium-item__edit-form input {
+    flex: 1;
+    min-width: 0;
+}
+
+.medium-item__edit-form button {
+    flex-shrink: 0;
+}
+
+/* Edit and remove controls */
+
+.medium-item__actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.medium-item__actions form {
+    margin: 0;
+}
+
+.medium-item__actions button {
+    padding: 4px 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font: inherit;
+    font-size: var(--text-size-sm);
+    cursor: pointer;
+    transition: color var(--transition-standard);
+}
+
+.medium-item__actions button:hover {
+    color: var(--color-accent);
+}
+
+.medium-item__actions .medium-item__delete:hover {
+    color: var(--color-pink-dark);
+}
+
+
+/* ==================================================
+   8. FORMS & SHARED HELP TEXT
+================================================== */
+
+.form-page,
+.detail-page {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding-top: 48px;
+}
+
+.form-page h1,
+.detail-heading h1 {
+    font-size: clamp(34px, 5vw, 52px);
+}
+
+.form-intro {
+    margin-bottom: 36px;
+}
+
+.idea-form {
+    margin-top: 32px;
+}
+
+.form-help {
+    margin: 20px 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-sm);
+    line-height: 1.8;
+}
+
+
+/* ==================================================
+   9. IDEA DETAIL PAGE
+================================================== */
+
+.detail-heading {
+    padding-bottom: 32px;
+    border-bottom: var(--border-thin);
+}
+
+.detail-date {
+    margin-top: 18px;
+}
+
+.detail-section {
+    padding: 28px 0;
+    border-bottom: var(--border-thin);
+}
+
+.detail-section > p {
+    margin-bottom: 0;
+}
+
+.detail-description {
+    white-space: pre-wrap;
+    line-height: 1.8;
+}
+
+.detail-section h3 {
+    margin: 24px 0 12px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.detail-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    padding-top: 28px;
+}
+
+
+/* ==================================================
+   10. COLOR PALETTES
+================================================== */
+
+.palette-swatches {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.palette-swatch {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: var(--text-size-xs);
+}
+
+.palette-swatch__color {
+    width: 64px;
+    height: 64px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+}
+
+
+/* ==================================================
+   11. REFERENCE IMAGES & LINKS
+================================================== */
+
+.reference-list {
+    padding-left: 20px;
+}
+
+.reference-list li {
+    margin-bottom: 10px;
+    line-height: 1.7;
+}
+
+.reference-list a {
+    color: var(--color-accent);
+    overflow-wrap: anywhere;
+    transition: color var(--transition-standard);
+}
+
+.reference-list a:hover {
+    color: var(--color-text-primary);
+}
+
+
+/* ==================================================
+   12. RESPONSIVE LAYOUTS
+================================================== */
+
+@media (max-width: 900px) {
+    .collection-list .destination-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    .destination-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .collection-create,
+    .medium-create {
+        padding: 24px;
+    }
+
+    .medium-item {
+        gap: 16px;
+    }
+}
+
+@media (max-width: 640px) {
+    .archive {
+        padding-bottom: 56px;
+    }
+
+    .archive-header {
+        padding-top: 36px;
+        padding-bottom: 36px;
+    }
+
+    .back-link {
+        margin-bottom: 28px;
+    }
+
+    .idea-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-form {
+        align-items: stretch;
+        flex-wrap: wrap;
+    }
+
+    .search-form input {
+        flex-basis: 100%;
+    }
+
+    .archive-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .idea-card {
+        padding: 22px;
+    }
+
+    .collection-create,
+    .medium-create {
+        margin-bottom: 48px;
+        padding: 22px;
+    }
+
+    .collection-card {
+        padding: 24px;
+    }
+
+    .medium-create__controls {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .medium-create__controls button {
+        align-self: flex-start;
+    }
+
+    .medium-item {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+        padding: 18px 0;
+    }
+
+    .medium-item:hover {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .medium-item__actions {
+        gap: 20px;
+    }
+
+    .medium-item__edit-form {
+        flex-wrap: wrap;
+    }
+
+    .medium-item__edit-form input {
+        flex-basis: 100%;
+    }
+
+    .form-page,
+    .detail-page {
+        padding-top: 32px;
+    }
+
+    .detail-actions {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .palette-swatch__color {
+        width: 54px;
+        height: 54px;
+    }
+}
+
+
+/* ==================================================
+   13. REDUCED MOTION
+================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .idea-card,
+    .collection-card,
+    .medium-item,
+    .text-link,
+    .idea-card h3 a,
+    .reference-list a {
+        transition: none;
+    }
+
+    .idea-card:hover,
+    .collection-card:hover {
+        transform: none;
+    }
+}
+
+/* Medium selection on the new idea form */
+.idea-form input[type="checkbox"] {
+    width: auto;
+    flex-shrink: 0;
+}
+
+.idea-form label:has(input[type="checkbox"]) {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: auto;
+    max-width: 100%;
+    white-space: normal;
+}
+
+.idea-form fieldset {
+    min-width: 0;
+}
+
+.idea-form fieldset label {
+    margin-top: 0;
+}
+
+/* Mediums and collections side by side */
+.idea-form__taxonomy {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+    align-items: start;
+    width: 100%;
+}
+
+.idea-form__mediums,
+.idea-form__collections {
+    min-width: 0;
+}
+
+.idea-form__mediums label,
+.idea-form__collections label {
+    overflow-wrap: anywhere;
+}
+
+/* Stack on smaller screens */
+@media (max-width: 640px) {
+    .idea-form__taxonomy {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}

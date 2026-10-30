@@ -1,0 +1,249 @@
+
+{% extends "base.html" %}
+
+{% block title %}Archive — Art Idea Organizer{% endblock %}
+
+{% block content %}
+<section class="archive archive--editorial">
+
+    <header class="archive-heading">
+        <p class="eyebrow">WELCOME TO</p>
+
+        <h1><span class="script-accent">My Personal Archive</span></h1>
+
+        <p class="archive-intro">
+            A working collection of visual references, art, projects, and inspiration.
+        </p>
+
+        <a
+            class="archive-create-link"
+            href="{{ url_for('ideas.create_idea') }}"
+        >
+            <span aria-hidden="true">＋</span> New idea
+        </a>
+    </header>
+
+    <form
+        action="{{ url_for('main.index') }}"
+        method="get"
+        class="archive-filters"
+    >
+        <div class="filter-field archive-search">
+            <label for="search-query">Search the archive</label>
+            <input
+                id="search-query"
+                type="search"
+                name="q"
+                value="{{ query }}"
+                placeholder="Titles, descriptions, mediums, colors..."
+            >
+        </div>
+
+        <details
+            class="archive-filter-details"
+            {% if selected_medium or selected_collection or color %}open{% endif %}
+        >
+            <summary>
+                Refine your search
+                <span aria-hidden="true">＋</span>
+            </summary>
+
+            <div class="archive-filter-grid">
+                <div class="filter-field">
+                    <label for="medium-filter">Medium</label>
+                    <select id="medium-filter" name="medium_id">
+                        <option value="">All mediums</option>
+                        {% for medium in mediums %}
+                            <option
+                                value="{{ medium.id }}"
+                                {% if selected_medium == medium.id %}selected{% endif %}
+                            >
+                                {{ medium.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="filter-field">
+                    <label for="collection-filter">Collection</label>
+                    <select id="collection-filter" name="collection_id">
+                        <option value="">All collections</option>
+                        {% for collection in collections %}
+                            <option
+                                value="{{ collection.id }}"
+                                {% if selected_collection == collection.id %}selected{% endif %}
+                            >
+                                {{ collection.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="filter-field">
+                    <label for="color-filter">Color</label>
+                    <input
+                        id="color-filter"
+                        type="text"
+                        name="color"
+                        value="{{ color }}"
+                        placeholder="#D9AAB9"
+                    >
+                </div>
+
+                <div class="archive-filter-actions">
+                    <button type="submit">Apply filters</button>
+                    <a href="{{ url_for('main.index') }}">Clear all</a>
+                </div>
+            </div>
+        </details>
+
+        <button class="archive-search-submit" type="submit">
+            Search archive
+        </button>
+    </form>
+
+    <div class="archive-toolbar">
+        <div>
+            <p class="eyebrow">THE IDEA WALL</p>
+            <h2><span class="script-accent">E</span><span class="archive-toolbar__period">xplore some ideas</span></h2>
+        </div>
+
+        <span class="result-count">
+            {{ ideas|length }} {{ "idea" if ideas|length == 1 else "ideas" }}
+        </span>
+    </div>
+
+    {% if ideas %}
+        <div class="idea-board">
+            {% for idea in ideas %}
+                <article class="idea-note">
+                    <div class="idea-note__top">
+                        <span class="idea-note__number">
+                            No. {{ "%02d"|format(idea.id) }}
+                        </span>
+
+                        <span class="idea-note__date">
+                            {{ idea.created_at.strftime("%b %d, %Y") }}
+                        </span>
+                    </div>
+
+                    {% if idea.reference_images %}
+                        <a
+                            class="idea-note__images"
+                            href="{{ url_for('ideas.idea_detail', idea_id=idea.id) }}"
+                            aria-label="View {{ idea.title }}"
+                        >
+                            {% for reference in idea.reference_images[:2] %}
+                                <img
+                                    src="{{ reference.url }}"
+                                    alt="{{ reference.caption or 'Inspiration reference' }}"
+                                    loading="lazy"
+                                >
+                            {% endfor %}
+                        </a>
+                    {% else %}
+                        <a
+                            class="idea-note__image-placeholder"
+                            href="{{ url_for('ideas.idea_detail', idea_id=idea.id) }}"
+                            aria-label="Open {{ idea.title }}"
+                        >
+                            <span>Visual notes</span>
+                            <span aria-hidden="true">✳</span>
+                            <small>No references added yet</small>
+                        </a>
+                    {% endif %}
+
+                    <div class="idea-note__body">
+                        <h3>
+                            <a href="{{ url_for('ideas.idea_detail', idea_id=idea.id) }}">
+                                {{ idea.title }}
+                            </a>
+                        </h3>
+
+                        <p class="idea-note__description">
+                            {{ idea.description or "A thought waiting to take shape." }}
+                        </p>
+
+                        {% if idea.mediums %}
+                            <div class="idea-note__tags">
+                                {% for medium in idea.mediums[:3] %}
+                                    <span>{{ medium.name }}</span>
+                                {% endfor %}
+
+                                {% if idea.mediums|length > 3 %}
+                                    <span>+{{ idea.mediums|length - 3 }}</span>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+
+                        {% if idea.palettes %}
+                            {% set palette = idea.palettes[0] %}
+
+                            {% if palette.colors %}
+                                <div
+                                    class="idea-note__palette"
+                                    role="img"
+                                    aria-label="Color palette: {% for swatch in palette.colors %}{{ swatch.hex_code }}{% if not loop.last %}, {% endif %}{% endfor %}"
+                                >
+                                    {% for swatch in palette.colors[:8] %}
+                                        <span
+                                            class="idea-note__swatch"
+                                            data-color="{{ swatch.hex_code }}"
+                                            title="{{ swatch.hex_code }}"
+                                        ></span>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if idea.collections %}
+                            <p class="idea-note__collection">
+                                Filed in {{ idea.collections[0].name }}
+                            </p>
+                        {% endif %}
+
+                        <a
+                            class="idea-note__link"
+                            href="{{ url_for('ideas.idea_detail', idea_id=idea.id) }}"
+                        >
+                            Open idea <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+
+    {% else %}
+        <div class="empty-state archive-empty">
+            {% if query or selected_medium or selected_collection or color %}
+                <p class="empty-state__title">Nothing on this page, yet.</p>
+                <p>
+                    No ideas match these filters. Try a different search
+                    or clear your filters to see your full archive.
+                </p>
+                <a
+                    class="button button--secondary"
+                    href="{{ url_for('main.index') }}"
+                >
+                    Clear filters
+                </a>
+            {% else %}
+                <p class="empty-state__title">
+                    No ideas yet!
+                </p>
+                <p>
+                    Start collecting ideas you don't want to forget.
+                </p>
+                <a
+                    class="button button--primary"
+                    href="{{ url_for('ideas.create_idea') }}"
+                >
+                    Create your first idea
+                </a>
+            {% endif %}
+        </div>
+    {% endif %}
+
+</section>
+{% endblock %}
+

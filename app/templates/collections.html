@@ -1,0 +1,87 @@
+
+{% extends "base.html" %}
+
+{% block title %}Collections — Art Idea Organizer{% endblock %}
+
+{% block content %}
+<section class="archive">
+    <header class="archive-header">
+        <a class="text-link back-link" href="{{ url_for('main.index') }}">
+            &larr; Back to archive
+        </a>
+
+        <h1 class="page-title">
+            <span class="script-accent">
+                Your collections
+            </span>
+        </h1>
+
+        <p>Organize ideas into groups that make sense to you!</p>
+    </header>
+
+    <section class="collection-create">
+        <h2>Create a collection</h2>
+
+        <form action="{{ url_for('collections.create') }}" method="post">
+            <label for="collection-name">Name</label>
+            <input
+                id="collection-name"
+                name="name"
+                type="text"
+                maxlength="100"
+                placeholder="e.g. Portrait studies"
+                required
+            >
+
+            <label for="collection-description">Description</label>
+            <textarea
+                id="collection-description"
+                name="description"
+                rows="3"
+                placeholder="What belongs in this collection?"
+            ></textarea>
+
+            <button class="button button--primary" type="submit">
+                Create collection
+            </button>
+        </form>
+    </section>
+
+    <section class="collection-list">
+        <h2>Saved collections</h2>
+
+        {% if collections %}
+            <div class="destination-grid">
+                {% for collection in collections %}
+                    <article class="collection-card">
+                        <h3>{{ collection.name }}</h3>
+
+                        {% if collection.description %}
+                            <p>{{ collection.description }}</p>
+                        {% endif %}
+
+                        <p class="collection-count">
+                            {{ collection.ideas|length }}
+                            {{ "idea" if collection.ideas|length == 1 else "ideas" }}
+                        </p>
+
+                        <form
+                            action="{{ url_for('collections.delete', collection_id=collection.id) }}"
+                            method="post"
+                            onsubmit="return confirm('Delete this collection? Its ideas will be kept.');"
+                        >
+                            <button class="button button--danger" type="submit">
+                                Delete collection
+                            </button>
+                        </form>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="form-help">
+                No collections yet. Create your first one above.
+            </p>
+        {% endif %}
+    </section>
+</section>
+{% endblock %}

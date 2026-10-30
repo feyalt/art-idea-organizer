@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Environment variables and secrets
+.env
+
+# Local database and runtime files
+instance/*.db
+instance/*.sqlite
+instance/*.sqlite3
+*.log
+
+# Test and tooling caches
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Editor / OS files
+.DS_Store
+.idea/
+.vscode/

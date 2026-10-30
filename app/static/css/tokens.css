@@ -1,0 +1,88 @@
+
+/* =========================================================
+   DESIGN TOKENS
+   Central source of truth for the visual system.
+   ========================================================= */
+
+:root {
+    /* -----------------------------------------------------
+       Color palette
+       Base colors used throughout the interface.
+       ----------------------------------------------------- */
+
+    --color-charcoal: #202024;
+    --color-white: #F7F7F8;
+
+    --color-gray-light: #E5E3E8;
+    --color-gray-border: #D0CDD4;
+    --color-gray-muted: #77747D;
+
+    --color-pink: #D9AAB9;
+    --color-pink-dark: #B77F93;
+    --color-pink-light: #F0E3E8;
+
+    --color-danger: #8F5369;
+    --color-danger-hover: #754054;
+
+    /* -----------------------------------------------------
+       Semantic colors
+       Describe how colors are used in the interface.
+       Components should prefer these tokens.
+       ----------------------------------------------------- */
+
+    --color-background: var(--color-white);
+
+    --color-surface: #FFFFFF;
+    --color-surface-muted: var(--color-gray-light);
+
+    --color-text-primary: var(--color-charcoal);
+    --color-text-secondary: var(--color-gray-muted);
+
+    --color-border: var(--color-gray-border);
+
+    --color-accent: var(--color-pink-dark);
+    --color-accent-hover: var(--color-charcoal);
+    --color-accent-soft: var(--color-pink-light);
+
+    /* -----------------------------------------------------
+       Typography
+       Font families and type scale.
+       ----------------------------------------------------- */
+
+    --font-body: "Nanum Myeongjo", serif;
+    --font-script: "Mea Culpa", cursive;
+
+    --text-size-xs: 12px;
+    --text-size-sm: 14px;
+    --text-size-body: 16px;
+    --text-size-lg: 20px;
+    --text-size-xl: 28px;
+
+    /* -----------------------------------------------------
+       Layout
+       Shared content widths, spacing, and page margins.
+       ----------------------------------------------------- */
+
+    --content-width: 1160px;
+
+    --page-gutter: clamp(20px, 4vw, 44px);
+    --section-space: clamp(64px, 8vw, 100px);
+
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+
+    /* -----------------------------------------------------
+       Borders and motion
+       Shared styles for component consistency.
+       ----------------------------------------------------- */
+
+    --border-thin: 1px solid var(--color-border);
+    --radius-sm: 4px;
+    --radius-md: 8px;
+
+    --transition-standard: 250ms ease;
+}
+

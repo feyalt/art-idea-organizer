@@ -1,0 +1,109 @@
+
+{% extends "base.html" %}
+
+{% block title %}
+    {{ "Edit Idea" if idea else "New Idea" }} — Art Idea Organizer
+{% endblock %}
+
+{% block content %}
+<section class="form-page">
+    <a class="text-link back-link" href="{{ url_for('main.index') }}">
+        &larr; Back to archive
+    </a>
+
+    <p class="eyebrow">
+        {{ "REFINE YOUR THOUGHTS" if idea else "A NEW IDEA" }}
+    </p>
+
+    <h1>
+        <span class="script-accent">
+            {{ "Edit your idea." if idea else "Capture your idea." }}
+        </span>
+    </h1>
+
+    <p class="form-intro">
+        Give the thought a name.
+    </p>
+
+    <form method="post" class="idea-form">
+        <div class="form-field">
+            <label for="title">
+                Title <span aria-hidden="true"></span>
+            </label>
+            <input
+                id="title"
+                name="title"
+                type="text"
+                maxlength="120"
+                value="{{ idea.title if idea else '' }}"
+                placeholder="e.g. To Prince Edward Island"
+                required
+                autofocus
+            >
+        </div>
+
+        <div class="form-field">
+            <label for="description">Description</label>
+            <textarea
+                id="description"
+                name="description"
+                rows="7"
+                placeholder="Inspiration, visions, possible directions..."
+            >{{ idea.description if idea else '' }}</textarea>
+        </div>
+
+        <div class="idea-form__taxonomy">
+            <fieldset class="form-field">
+                <legend>Mediums</legend>
+
+                {% for medium in mediums %}
+                    <label class="selection-option">
+                        <input
+                            type="checkbox"
+                            name="medium_ids"
+                            value="{{ medium.id }}"
+                            {% if idea and medium in idea.mediums %}checked{% endif %}
+                        >
+                        {{ medium.name }}
+                    </label>
+                {% else %}
+                    <p class="form-help">
+                        No mediums available yet.
+                    </p>
+                {% endfor %}
+            </fieldset>
+
+            <fieldset class="form-field">
+                <legend>Collections</legend>
+
+                {% for collection in collections %}
+                    <label class="selection-option">
+                        <input
+                            type="checkbox"
+                            name="collection_ids"
+                            value="{{ collection.id }}"
+                            {% if idea and collection in idea.collections %}checked{% endif %}
+                        >
+                        {{ collection.name }}
+                    </label>
+                {% else %}
+                    <p class="form-help">
+                        No collections available yet.
+                    </p>
+                {% endfor %}
+            </fieldset>
+        </div>
+
+        <div class="form-actions">
+            <button class="button button--primary" type="submit">
+                {{ "Save changes" if idea else "Save idea" }}
+            </button>
+
+            <a class="text-link" href="{{ url_for('main.index') }}">
+                Cancel
+            </a>
+        </div>
+    </form>
+</section>
+{% endblock %}
+

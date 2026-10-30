@@ -1,0 +1,233 @@
+
+{% extends "base.html" %}
+
+{% block title %}{{ idea.title }} — Art Idea Organizer{% endblock %}
+
+{% block content %}
+<article class="detail-page">
+    <a class="text-link back-link" href="{{ url_for('main.index') }}">
+        &larr; Back to archive
+    </a>
+
+    <div class="detail-heading">
+        <p class="eyebrow">ART IDEA · {{ "%04d"|format(idea.id) }}</p>
+        <h1>{{ idea.title }}</h1>
+
+        <p class="detail-date">
+            Created {{ idea.created_at.strftime("%B %d, %Y") }}
+        </p>
+    </div>
+
+    <section class="detail-section">
+        <h2>About this idea</h2>
+
+        {% if idea.description %}
+            <p class="detail-description">{{ idea.description }}</p>
+        {% else %}
+            <p class="muted-text">No description has been added yet.</p>
+        {% endif %}
+    </section>
+
+    <section class="detail-section">
+        <h2>Mediums</h2>
+
+        {% if idea.mediums %}
+            <div class="tag-list">
+                {% for medium in idea.mediums %}
+                    <span class="tag">{{ medium.name }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="muted-text">No mediums assigned yet.</p>
+        {% endif %}
+    </section>
+
+    <section class="detail-section">
+        <h2>Collections</h2>
+
+        {% if idea.collections %}
+            <div class="tag-list">
+                {% for collection in idea.collections %}
+                    <span class="tag">{{ collection.name }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="muted-text">This idea isn't in a collection yet.</p>
+        {% endif %}
+    </section>
+
+    <section class="detail-section">
+        <h2>Color palettes</h2>
+
+        <form
+            action="{{ url_for('palettes.create_palette', idea_id=idea.id) }}"
+            method="post"
+            class="palette-form"
+        >
+            <label for="palette-name">Palette name</label>
+            <input
+                id="palette-name"
+                type="text"
+                name="palette_name"
+                maxlength="100"
+                placeholder="e.g. Muted autumn"
+                required
+            >
+
+            <div id="palette-colors">
+                <label>
+                    Color 1
+                    <input
+                        type="color"
+                        name="colors"
+                        value="#D9AAB9"
+                        required
+                    >
+                </label>
+            </div>
+
+            <button
+                id="add-palette-color"
+                class="button button--secondary"
+                type="button"
+            >
+                Add another color
+            </button>
+
+            <button class="button button--primary" type="submit">
+                Save palette
+            </button>
+        </form>
+
+        {% if idea.palettes %}
+            <div class="saved-palettes">
+                {% for palette in idea.palettes %}
+                    <div class="saved-palette">
+                        <h3>{{ palette.name }}</h3>
+
+                        <div class="palette-swatches">
+                            {% for color in palette.colors %}
+                                <span
+                                    class="palette-swatch__color"
+                                    data-color="{{ color.hex_code }}"
+                                    title="{{ color.hex_code }}"
+                                ></span>
+                            {% endfor %}
+                        </div>
+
+                        <form
+                            action="{{ url_for('palettes.delete_palette', palette_id=palette.id) }}"
+                            method="post"
+                            onsubmit="return confirm('Delete this palette?');"
+                        >
+                            <button
+                                class="button button--danger"
+                                type="submit"
+                            >
+                                Delete palette
+                            </button>
+                        </form>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="form-help">
+                You haven't saved any color palettes for this idea yet.
+            </p>
+        {% endif %}
+    </section>
+
+    <section class="detail-section">
+        <h2>Reference images</h2>
+
+        <form
+            action="{{ url_for('references.create_reference', idea_id=idea.id) }}"
+            method="post"
+            class="reference-form"
+        >
+            <label for="reference-url">Image URL</label>
+            <input
+                id="reference-url"
+                type="url"
+                name="url"
+                maxlength="2048"
+                placeholder="https://example.com/image.jpg"
+                required
+            >
+
+            <label for="reference-caption">Caption (optional)</label>
+            <input
+                id="reference-caption"
+                type="text"
+                name="caption"
+                maxlength="255"
+                placeholder="What inspires you about this image?"
+            >
+
+            <button class="button button--primary" type="submit">
+                Add reference
+            </button>
+        </form>
+
+        {% if idea.reference_images %}
+            <div class="reference-grid">
+                {% for reference in idea.reference_images %}
+                    <article class="reference-card">
+                        <a
+                            href="{{ reference.url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <img
+                                src="{{ reference.url }}"
+                                alt="{{ reference.caption or 'Art reference' }}"
+                                loading="lazy"
+                            >
+                        </a>
+
+                        {% if reference.caption %}
+                            <p>{{ reference.caption }}</p>
+                        {% endif %}
+
+                        <form
+                            action="{{ url_for('references.delete_reference', reference_id=reference.id) }}"
+                            method="post"
+                            onsubmit="return confirm('Remove this reference image?');"
+                        >
+                            <button
+                                class="button button--danger"
+                                type="submit"
+                            >
+                                Remove
+                            </button>
+                        </form>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="form-help">
+                No reference images yet. Add one to start building your visual collection.
+            </p>
+        {% endif %}
+    </section>
+
+    <div class="detail-actions">
+        <a
+            class="button button--primary"
+            href="{{ url_for('ideas.edit_idea', idea_id=idea.id) }}"
+        >
+            Edit idea
+        </a>
+
+        <form
+            method="post"
+            action="{{ url_for('ideas.delete_idea', idea_id=idea.id) }}"
+            onsubmit="return confirm('Delete this idea permanently?');"
+        >
+            <button class="button button--danger" type="submit">
+                Delete idea
+            </button>
+        </form>
+    </div>
+</article>
+{% endblock %}

@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A personal archive of art ideas, visual references, and creative inspiration.">
+
+    <title>{% block title %}Art Idea Organizer{% endblock %}</title>
+
+    <link
+    href="https://fonts.googleapis.com/css2?family=Mea+Culpa&family=Nanum+Myeongjo:wght@400;700&display=swap"
+    rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tokens.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <a class="site-logo" href="{{ url_for('main.index') }}">
+            <span class="site-logo__initial">⟢⟡⟣</span>
+            <span class="site-logo__name">Art Idea Organizer & Archive</span>
+        </a>
+
+        <nav class="site-nav" aria-label="Main navigation">
+            <a href="{{ url_for('main.index') }}">Archive</a>
+            <a href="{{ url_for('ideas.create_idea') }}">New Idea</a>
+            <a href="{{ url_for('collections.index') }}">Collections</a>
+            <a href="{{ url_for('mediums.index') }}">Mediums</a>
+        </nav>
+    </header>
+
+    <main class="page-content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages" aria-live="polite">
+                    {% for category, message in messages %}
+                        <p class="flash-message flash-message--{{ category }}">
+                            {{ message }}
+                        </p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <p>C'est le temps que tu as perdu pour ta rose qui fait ta rose si importante. :)</p>
+    </footer>
+    <script src="{{ url_for('static', filename='js/palette.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/mediums.js') }}" defer></script>
+    <script src="{{ url_for('static', filename='js/references.js') }}" defer
+></script>
+</body>
+</html>
