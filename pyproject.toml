@@ -5,4 +5,6 @@ description = "A personal organizer for creative project ideas."
 requires-python = ">=3.11"
 
 [tool.pytest.ini_options]
+pythonpath = ["."]
 testpaths = ["tests"]
+

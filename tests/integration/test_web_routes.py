@@ -6,14 +6,17 @@ def test_archive_page_loads(client):
     response = client.get("/")
 
     assert response.status_code == 200
-    assert b"Your ideas" in response.data
+    assert b"THE IDEA WALL" in response.data
+    assert b"xplore some ideas" in response.data
 
 
 def test_new_idea_form_loads(client):
     response = client.get("/ideas/new")
 
     assert response.status_code == 200
-    assert b"Capture an idea" in response.data
+    assert b"Save idea" in response.data
+    assert b"Mediums" in response.data
+    assert b"Collections" in response.data
 
 
 def test_create_idea_through_form(client):
