@@ -68,9 +68,8 @@ For more information about the test organization and available commands, see the
 │   ├── static/
 │   └── templates/
 ├── docs/
-│   ├── architecture.png
-│   ├── architecture.md
-│   └── how-to-run.md
+│   ├── architecture/
+│   └── database/
 ├── migrations/
 ├── tests/
 │   ├── integration/
