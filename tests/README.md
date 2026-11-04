@@ -2,6 +2,8 @@
 
 This directory contains the automated test suite for the application. Tests are written using `pytest` and organized into unit and integration tests.
 
+Current code coverage is 92%
+
 ## Structure
 
 - **`unit/`** — Tests individual application components, including services and database models.

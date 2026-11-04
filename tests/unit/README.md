@@ -1,13 +1,6 @@
 # Unit Tests
 
-This directory contains tests for individual application components, focusing on service functionality, database models, and search operations.
-
-## Test Files
-
-- **`test_collection_service.py`** — Tests collection creation, validation, duplicate handling, idea associations, and deletion.
-- **`test_idea_service.py`** — Tests idea creation, updating, deletion, retrieval, and input validation.
-- **`test_models.py`** — Tests database model creation, persistence, and relationships between ideas, collections, mediums, palettes, and reference images.
-- **`test_search_service.py`** — Tests searching and filtering ideas by title, description, medium, collection, and color, including combinations of filters.
+This directory contains tests for individual application components, focusing on service and database model functionality.
 
 ## Running Unit Tests
 
