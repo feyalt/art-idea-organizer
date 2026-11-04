@@ -1,4 +1,3 @@
-
 /* ==================================================
    1. TYPOGRAPHY & PAGE HEADINGS
 ================================================== */
@@ -49,7 +48,42 @@ h1 {
 
 
 /* ==================================================
-   2. ARCHIVE PAGE LAYOUT
+   2. SHARED LINKS & TEXT
+================================================== */
+
+.text-link {
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-sm);
+    text-decoration: none;
+    transition: color var(--transition-standard);
+}
+
+.text-link:hover {
+    color: var(--color-accent);
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 36px;
+}
+
+.muted-text,
+.result-count,
+.detail-date {
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-sm);
+}
+
+.form-help {
+    margin: 20px 0 0;
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-sm);
+    line-height: 1.8;
+}
+
+
+/* ==================================================
+   3. ARCHIVE PAGE
 ================================================== */
 
 .archive {
@@ -71,26 +105,8 @@ h1 {
     line-height: 1.8;
 }
 
-.back-link {
-    display: inline-block;
-    margin-bottom: 36px;
-}
 
-.text-link {
-    color: var(--color-text-secondary);
-    font-size: var(--text-size-sm);
-    text-decoration: none;
-    transition: color var(--transition-standard);
-}
-
-.text-link:hover {
-    color: var(--color-accent);
-}
-
-
-/* ==================================================
-   3. ARCHIVE SEARCH & FILTERS
-================================================== */
+/* Search */
 
 .search-form {
     display: flex;
@@ -104,6 +120,9 @@ h1 {
     min-width: 0;
 }
 
+
+/* Archive toolbar */
+
 .archive-toolbar {
     display: flex;
     align-items: baseline;
@@ -114,30 +133,23 @@ h1 {
     border-bottom: var(--border-thin);
 }
 
-.archive-toolbar h2,
-.detail-section h2 {
+.archive-toolbar h2 {
     margin: 0;
     font-size: 18px;
     font-weight: 400;
 }
 
-.result-count,
-.muted-text,
-.detail-date {
-    color: var(--color-text-secondary);
-    font-size: var(--text-size-sm);
-}
 
-
-/* ==================================================
-   4. IDEA GRID & CARDS
-================================================== */
+/* Idea grid */
 
 .idea-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
 }
+
+
+/* Idea cards */
 
 .idea-card {
     display: flex;
@@ -204,9 +216,7 @@ h1 {
 }
 
 
-/* ==================================================
-   5. EMPTY STATES
-================================================== */
+/* Empty states */
 
 .empty-state {
     padding: 64px 24px;
@@ -229,7 +239,7 @@ h1 {
 
 
 /* ==================================================
-   6. COLLECTIONS PAGE
+   4. COLLECTIONS PAGE
 ================================================== */
 
 /* Creation form */
@@ -279,7 +289,8 @@ h1 {
     margin-top: 12px;
 }
 
-/* Saved collections */
+
+/* Collection list */
 
 .collection-list {
     display: block;
@@ -305,7 +316,8 @@ h1 {
     font-size: var(--text-size-sm);
 }
 
-/* Collection card grid */
+
+/* Collection cards */
 
 .collection-list .destination-grid {
     display: grid;
@@ -364,7 +376,7 @@ h1 {
 
 
 /* ==================================================
-   7. MEDIUMS PAGE
+   5. MEDIUMS PAGE
 ================================================== */
 
 /* Add-medium form */
@@ -398,6 +410,7 @@ h1 {
     flex-shrink: 0;
 }
 
+
 /* Medium list */
 
 .medium-list {
@@ -409,6 +422,7 @@ h1 {
     flex-direction: column;
     border-top: var(--border-thin);
 }
+
 
 /* Individual medium row */
 
@@ -436,6 +450,7 @@ h1 {
     overflow-wrap: anywhere;
 }
 
+
 /* Inline editing */
 
 .medium-item__edit-form {
@@ -459,7 +474,8 @@ h1 {
     flex-shrink: 0;
 }
 
-/* Edit and remove controls */
+
+/* Medium actions */
 
 .medium-item__actions {
     display: flex;
@@ -493,19 +509,17 @@ h1 {
 
 
 /* ==================================================
-   8. FORMS & SHARED HELP TEXT
+   6. FORMS & FORM LAYOUTS
 ================================================== */
 
-.form-page,
-.detail-page {
+.form-page {
     width: 100%;
     max-width: 760px;
     margin: 0 auto;
     padding-top: 48px;
 }
 
-.form-page h1,
-.detail-heading h1 {
+.form-page h1 {
     font-size: clamp(34px, 5vw, 52px);
 }
 
@@ -517,64 +531,225 @@ h1 {
     margin-top: 32px;
 }
 
-.form-help {
-    margin: 20px 0 0;
-    color: var(--color-text-secondary);
-    font-size: var(--text-size-sm);
-    line-height: 1.8;
+
+/* Medium and collection selection */
+
+.idea-form input[type="checkbox"] {
+    width: auto;
+    flex-shrink: 0;
+}
+
+.idea-form label:has(input[type="checkbox"]) {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    width: auto;
+    max-width: 100%;
+    white-space: normal;
+}
+
+.idea-form fieldset {
+    min-width: 0;
+}
+
+.idea-form fieldset label {
+    margin-top: 0;
+}
+
+.idea-form__taxonomy {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 32px;
+    width: 100%;
+}
+
+.idea-form__mediums,
+.idea-form__collections {
+    min-width: 0;
+}
+
+.idea-form__mediums label,
+.idea-form__collections label {
+    overflow-wrap: anywhere;
 }
 
 
 /* ==================================================
-   9. IDEA DETAIL PAGE
+   7. IDEA DETAIL PAGE
 ================================================== */
 
+.detail-page {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 32px;
+}
+
+.detail-page .back-link {
+    margin-bottom: 24px;
+}
+
+
+/* Heading */
+
 .detail-heading {
-    padding-bottom: 32px;
+    margin-bottom: 28px;
+    padding-bottom: 22px;
     border-bottom: var(--border-thin);
+}
+
+.detail-heading h1 {
+    margin: 10px 0;
+    font-size: clamp(34px, 5vw, 52px);
 }
 
 .detail-date {
     margin-top: 18px;
 }
 
-.detail-section {
-    padding: 28px 0;
+
+/* Two-column content layout */
+
+.detail-content-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+    gap: 48px;
+}
+
+.detail-main,
+.detail-sidebar {
+    min-width: 0;
+}
+
+
+/* Detail sections */
+
+.detail-page .detail-section {
+    margin: 0;
+    padding: 20px 0;
     border-bottom: var(--border-thin);
 }
 
-.detail-section > p {
+.detail-page .detail-section:first-child {
+    padding-top: 0;
+}
+
+.detail-page .detail-section h2 {
+    margin: 0 0 12px;
+    font-size: var(--text-size-xl);
+    font-weight: 400;
+}
+
+.detail-page .detail-section h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.detail-page .detail-section > p {
     margin-bottom: 0;
 }
 
 .detail-description {
+    max-width: none;
     white-space: pre-wrap;
-    line-height: 1.8;
+    line-height: 1.75;
 }
 
-.detail-section h3 {
-    margin: 24px 0 12px;
-    font-size: 16px;
-    font-weight: 400;
+.detail-page .muted-text {
+    margin: 0;
 }
+
+
+/* Detail page actions */
 
 .detail-actions {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 16px;
-    padding-top: 28px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: var(--border-thin);
 }
 
 
 /* ==================================================
-   10. COLOR PALETTES
+   8. COLOR PALETTES
 ================================================== */
+
+/* Palette creation form */
+
+.detail-page .palette-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+    width: 100%;
+    max-width: none;
+    margin: 12px 0 16px;
+}
+
+.detail-page .palette-form > label {
+    margin-bottom: 0;
+}
+
+.detail-page .palette-form input:not([type="color"]) {
+    width: 100%;
+}
+
+
+/* Color picker controls */
+
+.detail-page #palette-colors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+}
+
+.detail-page #palette-colors label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: var(--text-size-sm);
+}
+
+.detail-page #palette-colors input[type="color"] {
+    width: 34px;
+    height: 30px;
+    padding: 2px;
+}
+
+
+/* Saved palettes */
+
+.detail-page .saved-palettes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.detail-page .saved-palette {
+    min-width: 0;
+    padding: 12px;
+    border: var(--border-thin);
+    background: var(--color-surface);
+}
+
+.detail-page .saved-palette h3 {
+    margin: 0 0 8px;
+    overflow-wrap: anywhere;
+}
+
+
+/* Palette swatches */
 
 .palette-swatches {
     display: flex;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: 8px;
 }
 
 .palette-swatch {
@@ -585,15 +760,31 @@ h1 {
 }
 
 .palette-swatch__color {
+    display: inline-block;
     width: 64px;
     height: 64px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
 }
 
+.detail-page .palette-swatch__color {
+    width: 25px;
+    height: 25px;
+}
+
+.detail-page .saved-palette .palette-swatches {
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.detail-page .saved-palette .button {
+    padding: 6px 10px;
+    font-size: var(--text-size-sm);
+}
+
 
 /* ==================================================
-   11. REFERENCE IMAGES & LINKS
+   9. REFERENCE IMAGES & LINKS
 ================================================== */
 
 .reference-list {
@@ -616,8 +807,47 @@ h1 {
 }
 
 
+/* Detail page reference form */
+
+.detail-page .reference-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 16px 0 20px;
+    padding: 16px;
+}
+
+
+/* Reference image grid */
+
+.detail-page .reference-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.detail-page .reference-card {
+    min-width: 0;
+}
+
+.detail-page .reference-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.detail-page .reference-card > p {
+    margin: 8px 10px;
+}
+
+.detail-page .reference-card > form {
+    padding: 0 8px 8px;
+}
+
+
 /* ==================================================
-   12. RESPONSIVE LAYOUTS
+   10. RESPONSIVE LAYOUTS
 ================================================== */
 
 @media (max-width: 900px) {
@@ -626,9 +856,36 @@ h1 {
     }
 }
 
+
 @media (max-width: 760px) {
-    .destination-grid {
+    /* Detail page */
+
+    .detail-page {
+        padding-top: 28px;
+    }
+
+    .detail-content-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .detail-page .detail-sidebar {
+        border-top: var(--border-thin);
+    }
+
+    .detail-page .detail-sidebar .detail-section:first-child {
+        padding-top: 20px;
+    }
+
+    /* Other page layouts */
+
+    .collection-list .destination-grid,
+    .idea-form__taxonomy {
+        grid-template-columns: 1fr;
+    }
+
+    .idea-form__taxonomy {
+        gap: 24px;
     }
 
     .collection-create,
@@ -641,7 +898,10 @@ h1 {
     }
 }
 
+
 @media (max-width: 640px) {
+    /* Archive */
+
     .archive {
         padding-bottom: 56px;
     }
@@ -677,6 +937,9 @@ h1 {
     .idea-card {
         padding: 22px;
     }
+
+
+    /* Collections and mediums */
 
     .collection-create,
     .medium-create {
@@ -721,14 +984,20 @@ h1 {
         flex-basis: 100%;
     }
 
-    .form-page,
-    .detail-page {
+
+    /* Forms and detail page */
+
+    .form-page {
         padding-top: 32px;
     }
 
-    .detail-actions {
+    .detail-page .detail-actions {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .detail-page .saved-palettes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .palette-swatch__color {
@@ -738,8 +1007,20 @@ h1 {
 }
 
 
+@media (max-width: 480px) {
+    .detail-page .reference-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .detail-page .saved-palettes {
+        grid-template-columns: 1fr;
+    }
+}
+
+
 /* ==================================================
-   13. REDUCED MOTION
+   11. REDUCED MOTION
 ================================================== */
 
 @media (prefers-reduced-motion: reduce) {
@@ -755,55 +1036,5 @@ h1 {
     .idea-card:hover,
     .collection-card:hover {
         transform: none;
-    }
-}
-
-/* Medium selection on the new idea form */
-.idea-form input[type="checkbox"] {
-    width: auto;
-    flex-shrink: 0;
-}
-
-.idea-form label:has(input[type="checkbox"]) {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    width: auto;
-    max-width: 100%;
-    white-space: normal;
-}
-
-.idea-form fieldset {
-    min-width: 0;
-}
-
-.idea-form fieldset label {
-    margin-top: 0;
-}
-
-/* Mediums and collections side by side */
-.idea-form__taxonomy {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 32px;
-    align-items: start;
-    width: 100%;
-}
-
-.idea-form__mediums,
-.idea-form__collections {
-    min-width: 0;
-}
-
-.idea-form__mediums label,
-.idea-form__collections label {
-    overflow-wrap: anywhere;
-}
-
-/* Stack on smaller screens */
-@media (max-width: 640px) {
-    .idea-form__taxonomy {
-        grid-template-columns: 1fr;
-        gap: 24px;
     }
 }
