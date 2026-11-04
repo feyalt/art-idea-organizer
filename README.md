@@ -1,6 +1,6 @@
 # Art Idea Organizer & Archive
 
-A web application for organizing, managing, and exploring creative ideas. Art Idea Organizer provides a centralized space to document project concepts, organize collections, track artistic mediums, create color palettes, and save visual references.
+A full-stack web application for capturing, organizing, and developing creative project ideas. Users can document concepts, group projects into collections, manage artistic mediums, build custom color palettes, and save visual references in a single workspace. Developed using Flask, SQLAlchemy, and SQLite, with a frontend built using HTML, CSS, and JavaScript.
 
 ## Features
 
@@ -56,24 +56,3 @@ pytest
 ```
 
 For more information about the test organization and available commands, see the [Tests Documentation](tests/README.md).
-
-## Project Structure
-
-```text
-.
-├── app/
-│   ├── models/
-│   ├── routes/
-│   ├── services/
-│   ├── static/
-│   └── templates/
-├── docs/
-│   ├── architecture/
-│   └── database/
-├── migrations/
-├── tests/
-│   ├── integration/
-│   └── unit/
-├── config.py
-└── ...
-```
