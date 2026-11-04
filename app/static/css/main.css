@@ -58,9 +58,7 @@ h1 {
     transition: color var(--transition-standard);
 }
 
-.text-link:hover {
-    color: var(--color-accent);
-}
+.text-link:hover { color: var(--color-accent); }
 
 .back-link {
     display: inline-block;
@@ -86,6 +84,8 @@ h1 {
    3. ARCHIVE PAGE
 ================================================== */
 
+/* Layout and introduction */
+
 .archive {
     width: 100%;
     max-width: var(--content-width);
@@ -105,7 +105,6 @@ h1 {
     line-height: 1.8;
 }
 
-
 /* Search */
 
 .search-form {
@@ -120,8 +119,7 @@ h1 {
     min-width: 0;
 }
 
-
-/* Archive toolbar */
+/* Toolbar */
 
 .archive-toolbar {
     display: flex;
@@ -139,17 +137,13 @@ h1 {
     font-weight: 400;
 }
 
-
-/* Idea grid */
+/* Idea cards */
 
 .idea-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
 }
-
-
-/* Idea cards */
 
 .idea-card {
     display: flex;
@@ -158,9 +152,7 @@ h1 {
     padding: 28px;
     border: var(--border-thin);
     background: var(--color-surface);
-    transition:
-        border-color var(--transition-standard),
-        transform var(--transition-standard);
+    transition: border-color var(--transition-standard), transform var(--transition-standard);
 }
 
 .idea-card:hover {
@@ -189,9 +181,7 @@ h1 {
     transition: color var(--transition-standard);
 }
 
-.idea-card h3 a:hover {
-    color: var(--color-accent);
-}
+.idea-card h3 a:hover { color: var(--color-accent); }
 
 .idea-card__description {
     display: -webkit-box;
@@ -215,8 +205,7 @@ h1 {
     margin-top: 24px;
 }
 
-
-/* Empty states */
+/* Empty state */
 
 .empty-state {
     padding: 64px 24px;
@@ -242,9 +231,10 @@ h1 {
    4. COLLECTIONS PAGE
 ================================================== */
 
-/* Creation form */
+/* Creation forms */
 
-.collection-create {
+.collection-create,
+.medium-create {
     max-width: 680px;
     margin: 0 0 64px;
     padding: 28px 32px 32px;
@@ -260,9 +250,14 @@ h1 {
     line-height: 1.4;
 }
 
-.collection-create form {
+.collection-create form,
+.medium-create form {
     display: flex;
     flex-direction: column;
+    gap: 12px;
+}
+
+.collection-create form {
     align-items: flex-start;
     gap: 10px;
 }
@@ -285,10 +280,7 @@ h1 {
     resize: vertical;
 }
 
-.collection-create button {
-    margin-top: 12px;
-}
-
+.collection-create button { margin-top: 12px; }
 
 /* Collection list */
 
@@ -316,7 +308,6 @@ h1 {
     font-size: var(--text-size-sm);
 }
 
-
 /* Collection cards */
 
 .collection-list .destination-grid {
@@ -334,9 +325,7 @@ h1 {
     padding: 26px 28px;
     border: var(--border-thin);
     background: var(--color-surface);
-    transition:
-        border-color var(--transition-standard),
-        transform var(--transition-standard);
+    transition: border-color var(--transition-standard), transform var(--transition-standard);
 }
 
 .collection-card:hover {
@@ -366,34 +355,16 @@ h1 {
     letter-spacing: 0.04em;
 }
 
-.collection-card form {
-    margin-top: auto;
-}
+.collection-card form { margin-top: auto; }
 
-.collection-card .button--secondary {
-    font-size: var(--text-size-xs);
-}
+.collection-card .button--secondary { font-size: var(--text-size-xs); }
 
 
 /* ==================================================
    5. MEDIUMS PAGE
 ================================================== */
 
-/* Add-medium form */
-
-.medium-create {
-    max-width: 680px;
-    margin: 0 0 64px;
-    padding: 28px 32px 32px;
-    border: var(--border-thin);
-    background: var(--color-surface);
-}
-
-.medium-create form {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
+/* Creation controls */
 
 .medium-create__controls {
     display: flex;
@@ -406,25 +377,17 @@ h1 {
     min-width: 0;
 }
 
-.medium-create__controls button {
-    flex-shrink: 0;
-}
-
+.medium-create__controls button { flex-shrink: 0; }
 
 /* Medium list */
 
-.medium-list {
-    margin-top: 0;
-}
+.medium-list { margin-top: 0; }
 
 .medium-list__items {
     display: flex;
     flex-direction: column;
     border-top: var(--border-thin);
 }
-
-
-/* Individual medium row */
 
 .medium-item {
     display: flex;
@@ -450,7 +413,6 @@ h1 {
     overflow-wrap: anywhere;
 }
 
-
 /* Inline editing */
 
 .medium-item__edit-form {
@@ -461,19 +423,14 @@ h1 {
     min-width: 0;
 }
 
-.medium-item__edit-form[hidden] {
-    display: none;
-}
+.medium-item__edit-form[hidden] { display: none; }
 
 .medium-item__edit-form input {
     flex: 1;
     min-width: 0;
 }
 
-.medium-item__edit-form button {
-    flex-shrink: 0;
-}
-
+.medium-item__edit-form button { flex-shrink: 0; }
 
 /* Medium actions */
 
@@ -484,9 +441,7 @@ h1 {
     flex-shrink: 0;
 }
 
-.medium-item__actions form {
-    margin: 0;
-}
+.medium-item__actions form { margin: 0; }
 
 .medium-item__actions button {
     padding: 4px 0;
@@ -499,13 +454,9 @@ h1 {
     transition: color var(--transition-standard);
 }
 
-.medium-item__actions button:hover {
-    color: var(--color-accent);
-}
+.medium-item__actions button:hover { color: var(--color-accent); }
 
-.medium-item__actions .medium-item__delete:hover {
-    color: var(--color-pink-dark);
-}
+.medium-item__actions .medium-item__delete:hover { color: var(--color-pink-dark); }
 
 
 /* ==================================================
@@ -519,20 +470,11 @@ h1 {
     padding-top: 48px;
 }
 
-.form-page h1 {
-    font-size: clamp(34px, 5vw, 52px);
-}
+.form-page h1 { font-size: clamp(34px, 5vw, 52px); }
 
-.form-intro {
-    margin-bottom: 36px;
-}
+.form-intro { margin-bottom: 36px; }
 
-.idea-form {
-    margin-top: 32px;
-}
-
-
-/* Medium and collection selection */
+.idea-form { margin-top: 32px; }
 
 .idea-form input[type="checkbox"] {
     width: auto;
@@ -548,13 +490,11 @@ h1 {
     white-space: normal;
 }
 
-.idea-form fieldset {
-    min-width: 0;
-}
+.idea-form fieldset { min-width: 0; }
 
-.idea-form fieldset label {
-    margin-top: 0;
-}
+.idea-form fieldset label { margin-top: 0; }
+
+/* Medium and collection selection */
 
 .idea-form__taxonomy {
     display: grid;
@@ -586,12 +526,7 @@ h1 {
     padding-top: 32px;
 }
 
-.detail-page .back-link {
-    margin-bottom: 24px;
-}
-
-
-/* Heading */
+.detail-page .back-link { margin-bottom: 24px; }
 
 .detail-heading {
     margin-bottom: 28px;
@@ -604,16 +539,13 @@ h1 {
     font-size: clamp(34px, 5vw, 52px);
 }
 
-.detail-date {
-    margin-top: 18px;
-}
+.detail-date { margin-top: 18px; }
 
-
-/* Two-column content layout */
+/* Main content and sidebar */
 
 .detail-content-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     align-items: start;
     gap: 48px;
 }
@@ -623,18 +555,14 @@ h1 {
     min-width: 0;
 }
 
-
-/* Detail sections */
-
 .detail-page .detail-section {
+    min-width: 0;
     margin: 0;
     padding: 20px 0;
     border-bottom: var(--border-thin);
 }
 
-.detail-page .detail-section:first-child {
-    padding-top: 0;
-}
+.detail-page .detail-section:first-child { padding-top: 0; }
 
 .detail-page .detail-section h2 {
     margin: 0 0 12px;
@@ -648,9 +576,7 @@ h1 {
     font-weight: 400;
 }
 
-.detail-page .detail-section > p {
-    margin-bottom: 0;
-}
+.detail-page .detail-section > p { margin-bottom: 0; }
 
 .detail-description {
     max-width: none;
@@ -658,12 +584,7 @@ h1 {
     line-height: 1.75;
 }
 
-.detail-page .muted-text {
-    margin: 0;
-}
-
-
-/* Detail page actions */
+.detail-page .muted-text { margin: 0; }
 
 .detail-actions {
     display: flex;
@@ -680,48 +601,23 @@ h1 {
    8. COLOR PALETTES
 ================================================== */
 
-/* Palette creation form */
+/* Palette creation */
 
 .detail-page .palette-form {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 7px;
+    gap: 10px;
     width: 100%;
-    max-width: none;
     margin: 12px 0 16px;
 }
 
-.detail-page .palette-form > label {
-    margin-bottom: 0;
-}
+.detail-page .palette-form > label { margin-bottom: 0; }
 
 .detail-page .palette-form input:not([type="color"]) {
     width: 100%;
+    box-sizing: border-box;
 }
-
-
-/* Color picker controls */
-
-.detail-page #palette-colors {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px 14px;
-}
-
-.detail-page #palette-colors label {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    font-size: var(--text-size-sm);
-}
-
-.detail-page #palette-colors input[type="color"] {
-    width: 34px;
-    height: 30px;
-    padding: 2px;
-}
-
 
 /* Saved palettes */
 
@@ -736,50 +632,153 @@ h1 {
     padding: 12px;
     border: var(--border-thin);
     background: var(--color-surface);
+    box-sizing: border-box;
 }
 
-.detail-page .saved-palette h3 {
-    margin: 0 0 8px;
-    overflow-wrap: anywhere;
-}
+.detail-page .saved-palette h3 { margin: 0 0 12px; }
 
-
-/* Palette swatches */
+/* Swatch layout */
 
 .palette-swatches {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    align-items: flex-start;
+    gap: 10px;
+    min-width: 0;
 }
 
 .palette-swatch {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    align-items: flex-start;
+    gap: 5px;
+    min-width: 0;
     font-size: var(--text-size-xs);
 }
 
-.palette-swatch__color {
-    display: inline-block;
-    width: 64px;
-    height: 64px;
+/* Archive card palettes */
+
+.idea-note__palette {
+    display: flex;
+    align-items: stretch;
+    width: 100%;
+    height: 26px;
+    margin-top: 16px;
+    overflow: hidden;
+}
+
+.idea-note__swatch {
+    display: block;
+    min-width: 0;
+    height: 100%;
+}
+
+/* Color squares and pickers */
+
+.palette-swatch__color,
+.palette-swatch__picker {
+    display: block;
+    position: relative;
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    overflow: hidden;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
+    box-sizing: border-box;
 }
 
-.detail-page .palette-swatch__color {
-    width: 25px;
-    height: 25px;
+.palette-swatch__picker { cursor: pointer; }
+
+.palette-swatch__picker input[type="color"] {
+    position: absolute;
+    inset: -8px;
+    width: calc(100% + 16px);
+    height: calc(100% + 16px);
+    padding: 0;
+    border: 0;
+    opacity: 0;
+    cursor: pointer;
 }
 
-.detail-page .saved-palette .palette-swatches {
-    gap: 5px;
-    margin-bottom: 10px;
+/* Swatch labels */
+
+.palette-swatch__label {
+    color: var(--color-text-secondary);
+    font-size: var(--text-size-xs);
+    line-height: 1.4;
 }
+
+/* Editable swatches */
+
+.palette-swatch--editable { gap: 5px; }
+
+.palette-swatch--editable .button {
+    margin: 2px 0 0;
+    padding: 4px 7px;
+    font-size: var(--text-size-xs);
+    white-space: nowrap;
+}
+
+/* Palette actions */
+
+.palette-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.palette-actions form { margin: 0; }
 
 .detail-page .saved-palette .button {
     padding: 6px 10px;
     font-size: var(--text-size-sm);
+}
+
+/* Inline editing */
+
+.palette-edit-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+    margin-top: 8px;
+    box-sizing: border-box;
+}
+
+.palette-edit-form[hidden],
+.palette-display[hidden] {
+    display: none;
+}
+
+.palette-edit-form > input {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.palette-edit-colors {
+    width: 100%;
+    min-width: 0;
+}
+
+.palette-edit-form > .button {
+    max-width: 100%;
+    white-space: normal;
+}
+
+.palette-edit-form .palette-actions {
+    width: 100%;
+    min-width: 0;
+}
+
+.palette-edit-form .button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 
@@ -787,9 +786,7 @@ h1 {
    9. REFERENCE IMAGES & LINKS
 ================================================== */
 
-.reference-list {
-    padding-left: 20px;
-}
+.reference-list { padding-left: 20px; }
 
 .reference-list li {
     margin-bottom: 10px;
@@ -802,12 +799,9 @@ h1 {
     transition: color var(--transition-standard);
 }
 
-.reference-list a:hover {
-    color: var(--color-text-primary);
-}
+.reference-list a:hover { color: var(--color-text-primary); }
 
-
-/* Detail page reference form */
+/* Reference form */
 
 .detail-page .reference-form {
     display: flex;
@@ -817,8 +811,7 @@ h1 {
     padding: 16px;
 }
 
-
-/* Reference image grid */
+/* Reference cards */
 
 .detail-page .reference-grid {
     display: grid;
@@ -827,9 +820,7 @@ h1 {
     margin-top: 16px;
 }
 
-.detail-page .reference-card {
-    min-width: 0;
-}
+.detail-page .reference-card { min-width: 0; }
 
 .detail-page .reference-card img {
     width: 100%;
@@ -837,13 +828,9 @@ h1 {
     object-fit: cover;
 }
 
-.detail-page .reference-card > p {
-    margin: 8px 10px;
-}
+.detail-page .reference-card > p { margin: 8px 10px; }
 
-.detail-page .reference-card > form {
-    padding: 0 8px 8px;
-}
+.detail-page .reference-card > form { padding: 0 8px 8px; }
 
 
 /* ==================================================
@@ -856,77 +843,51 @@ h1 {
     }
 }
 
-
 @media (max-width: 760px) {
-    /* Detail page */
-
-    .detail-page {
-        padding-top: 28px;
-    }
+    .detail-page { padding-top: 28px; }
 
     .detail-content-grid {
         grid-template-columns: 1fr;
         gap: 12px;
     }
 
-    .detail-page .detail-sidebar {
-        border-top: var(--border-thin);
-    }
+    .detail-page .detail-sidebar { border-top: var(--border-thin); }
 
-    .detail-page .detail-sidebar .detail-section:first-child {
-        padding-top: 20px;
-    }
-
-    /* Other page layouts */
+    .detail-page .detail-sidebar .detail-section:first-child { padding-top: 20px; }
 
     .collection-list .destination-grid,
     .idea-form__taxonomy {
         grid-template-columns: 1fr;
     }
 
-    .idea-form__taxonomy {
-        gap: 24px;
-    }
+    .idea-form__taxonomy { gap: 24px; }
 
     .collection-create,
     .medium-create {
         padding: 24px;
     }
 
-    .medium-item {
-        gap: 16px;
-    }
+    .medium-item { gap: 16px; }
 }
 
-
 @media (max-width: 640px) {
-    /* Archive */
-
-    .archive {
-        padding-bottom: 56px;
-    }
+    .archive { padding-bottom: 56px; }
 
     .archive-header {
         padding-top: 36px;
         padding-bottom: 36px;
     }
 
-    .back-link {
-        margin-bottom: 28px;
-    }
+    .back-link { margin-bottom: 28px; }
 
-    .idea-grid {
-        grid-template-columns: 1fr;
-    }
+    .idea-grid { grid-template-columns: 1fr; }
 
     .search-form {
-        align-items: stretch;
         flex-wrap: wrap;
+        align-items: stretch;
     }
 
-    .search-form input {
-        flex-basis: 100%;
-    }
+    .search-form input { flex-basis: 100%; }
 
     .archive-toolbar {
         align-items: flex-start;
@@ -934,12 +895,7 @@ h1 {
         gap: 8px;
     }
 
-    .idea-card {
-        padding: 22px;
-    }
-
-
-    /* Collections and mediums */
+    .idea-card { padding: 22px; }
 
     .collection-create,
     .medium-create {
@@ -947,18 +903,14 @@ h1 {
         padding: 22px;
     }
 
-    .collection-card {
-        padding: 24px;
-    }
+    .collection-card { padding: 24px; }
 
     .medium-create__controls {
         align-items: stretch;
         flex-direction: column;
     }
 
-    .medium-create__controls button {
-        align-self: flex-start;
-    }
+    .medium-create__controls button { align-self: flex-start; }
 
     .medium-item {
         align-items: flex-start;
@@ -972,24 +924,13 @@ h1 {
         padding-left: 0;
     }
 
-    .medium-item__actions {
-        gap: 20px;
-    }
+    .medium-item__actions { gap: 20px; }
 
-    .medium-item__edit-form {
-        flex-wrap: wrap;
-    }
+    .medium-item__edit-form { flex-wrap: wrap; }
 
-    .medium-item__edit-form input {
-        flex-basis: 100%;
-    }
+    .medium-item__edit-form input { flex-basis: 100%; }
 
-
-    /* Forms and detail page */
-
-    .form-page {
-        padding-top: 32px;
-    }
+    .form-page { padding-top: 32px; }
 
     .detail-page .detail-actions {
         align-items: flex-start;
@@ -1006,15 +947,21 @@ h1 {
     }
 }
 
-
 @media (max-width: 480px) {
     .detail-page .reference-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 10px;
     }
 
-    .detail-page .saved-palettes {
-        grid-template-columns: 1fr;
+    .detail-page .saved-palettes { grid-template-columns: 1fr; }
+
+    .palette-color-input { grid-template-columns: minmax(0, 1fr) auto; }
+
+    .palette-color-input input[type="color"] { grid-column: 2; }
+
+    .palette-color-input .button {
+        grid-column: 1 / -1;
+        justify-self: start;
     }
 }
 

@@ -1,12 +1,15 @@
-
 """Business logic for creating and managing art ideas."""
 
+import re
+
 from app.extensions import db
-from app.models import Collection, Medium, ProjectIdea
+from app.models import (Collection, ColorPalette, Medium, PaletteColor, ProjectIdea,)
 
 
 class IdeaService:
     """Coordinate operations involving project ideas."""
+
+    MAX_PALETTE_COLORS = 12
 
     @staticmethod
     def create(title, description="", medium_ids=None, collection_ids=None):
@@ -75,16 +78,24 @@ class IdeaService:
         idea.description = description.strip()
 
         if medium_ids is not None:
-            idea.mediums = db.session.scalars(
-                db.select(Medium).where(Medium.id.in_(medium_ids))
-            ).all() if medium_ids else []
+            idea.mediums = (
+                db.session.scalars(
+                    db.select(Medium).where(Medium.id.in_(medium_ids))
+                ).all()
+                if medium_ids
+                else []
+            )
 
         if collection_ids is not None:
-            idea.collections = db.session.scalars(
-                db.select(Collection).where(
-                    Collection.id.in_(collection_ids)
-                )
-            ).all() if collection_ids else []
+            idea.collections = (
+                db.session.scalars(
+                    db.select(Collection).where(
+                        Collection.id.in_(collection_ids)
+                    )
+                ).all()
+                if collection_ids
+                else []
+            )
 
         db.session.commit()
         return idea
@@ -100,31 +111,43 @@ class IdeaService:
         db.session.delete(idea)
         db.session.commit()
         return True
-    
+
+    @staticmethod
+    def _validate_palette(name, colors):
+        """Validate a palette name and its hexadecimal colors."""
+        name = name.strip()
+
+        if not name:
+            raise ValueError("A palette must have a name.")
+
+        if not colors:
+            raise ValueError("A palette must contain at least one color.")
+
+        if len(colors) > IdeaService.MAX_PALETTE_COLORS:
+            raise ValueError(
+                f"A palette cannot contain more than "
+                f"{IdeaService.MAX_PALETTE_COLORS} colors."
+            )
+
+        for color in colors:
+            if not re.fullmatch(r"#[0-9a-fA-F]{6}", color):
+                raise ValueError(f"Invalid hexadecimal color: {color}")
+
+        return name, [color.upper() for color in colors]
+
     @staticmethod
     def add_palette(idea_id, name, colors):
         """Create a named color palette for an idea."""
-        import re
-
-        from app.models import ColorPalette, PaletteColor
-
         idea = db.session.get(ProjectIdea, idea_id)
 
         if idea is None:
             return None
 
-        name = name.strip()
-        if not name:
-            raise ValueError("A palette must have a name.")
-
-        # Accept only six-digit hexadecimal colors.
-        for color in colors:
-            if not re.fullmatch(r"#[0-9a-fA-F]{6}", color):
-                raise ValueError(f"Invalid hexadecimal color: {color}")
+        name, colors = IdeaService._validate_palette(name, colors)
 
         palette = ColorPalette(name=name, idea=idea)
         palette.colors = [
-            PaletteColor(hex_code=color.upper(), position=index)
+            PaletteColor(hex_code=color, position=index)
             for index, color in enumerate(colors)
         ]
 
@@ -132,4 +155,24 @@ class IdeaService:
         db.session.commit()
         return palette
 
+    @staticmethod
+    def update_palette(palette_id, name, colors):
+        """Update a palette's name and its individual colors."""
+        palette = db.session.get(ColorPalette, palette_id)
 
+        if palette is None:
+            return None
+
+        name, colors = IdeaService._validate_palette(name, colors)
+
+        palette.name = name
+
+        # Replace the existing colors. The relationship's
+        # delete-orphan cascade removes the old color records.
+        palette.colors = [
+            PaletteColor(hex_code=color, position=index)
+            for index, color in enumerate(colors)
+        ]
+
+        db.session.commit()
+        return palette

@@ -1,11 +1,11 @@
 /* ==============================================================
-   This file contains reusable components and styles for buttons, 
-   links, forms, tags, flash messages, and other UI elements.    
-   ============================================================== */
+   Reusable components and styles for buttons, links, forms,
+   tags, flash messages, and other UI elements.
+============================================================== */
 
 
 /* 1. Buttons and links
-   ================================================== */
+================================================== */
 
 /* Buttons */
 
@@ -29,9 +29,7 @@
     color: var(--color-surface);
 }
 
-.button--primary:hover:not(:disabled) {
-    background: var(--color-gray-muted);
-}
+.button--primary:hover:not(:disabled) { background: var(--color-gray-muted); }
 
 .button--secondary {
     border-color: var(--color-border);
@@ -84,7 +82,7 @@ a:focus-visible {
 
 
 /* 2. Tags
-   ================================================== */
+================================================== */
 
 .tag-list {
     display: flex;
@@ -103,7 +101,7 @@ a:focus-visible {
 
 
 /* 3. Forms and form controls
-   ================================================== */
+================================================== */
 
 .form-field {
     display: flex;
@@ -122,9 +120,7 @@ a:focus-visible {
     font-weight: 700;
 }
 
-.form-field legend {
-    margin-bottom: 12px;
-}
+.form-field legend { margin-bottom: 12px; }
 
 .form-field input,
 .form-field textarea,
@@ -140,9 +136,7 @@ a:focus-visible {
     font: inherit;
 }
 
-.form-field textarea {
-    resize: vertical;
-}
+.form-field textarea { resize: vertical; }
 
 .form-field input:focus,
 .form-field textarea:focus,
@@ -160,9 +154,7 @@ a:focus-visible {
     cursor: pointer;
 }
 
-.selection-option input {
-    accent-color: var(--color-accent);
-}
+.selection-option input { accent-color: var(--color-accent); }
 
 .form-actions,
 .detail-actions {
@@ -172,9 +164,7 @@ a:focus-visible {
     gap: 16px;
 }
 
-.detail-actions form {
-    margin: 0;
-}
+.detail-actions form { margin: 0; }
 
 .form-help {
     color: var(--color-text-secondary);
@@ -194,11 +184,9 @@ a:focus-visible {
 
 
 /* 4. Flash messages
-   ================================================== */
+================================================== */
 
-.flash-messages {
-    margin-top: 24px;
-}
+.flash-messages { margin-top: 24px; }
 
 .flash-message {
     padding: 12px 16px;
@@ -220,11 +208,9 @@ a:focus-visible {
 
 
 /* 5. Idea detail page
-   ================================================== */
+================================================== */
 
-.detail-page {
-    padding-bottom: var(--section-space);
-}
+.detail-page { padding-bottom: var(--section-space); }
 
 .back-link {
     display: inline-block;
@@ -251,9 +237,7 @@ a:focus-visible {
     font-size: var(--text-size-sm);
 }
 
-.detail-section {
-    margin: 0 0 44px;
-}
+.detail-section { margin: 0 0 44px; }
 
 .detail-section h2 {
     margin: 0 0 18px;
@@ -277,7 +261,7 @@ a:focus-visible {
 
 
 /* 6. Color palettes
-   ================================================== */
+================================================== */
 
 .palette-form {
     display: grid;
@@ -326,9 +310,7 @@ a:focus-visible {
 }
 
 .palette-form button,
-.reference-form button {
-    justify-self: start;
-}
+.reference-form button { justify-self: start; }
 
 .saved-palettes {
     display: grid;
@@ -377,13 +359,11 @@ a:focus-visible {
     cursor: pointer;
 }
 
-.button-secondary:hover {
-    color: var(--color-pink-dark);
-}
+.button-secondary:hover { color: var(--color-pink-dark); }
 
 
 /* 7. Reference images
-   ================================================== */
+================================================== */
 
 .reference-form {
     display: grid;
@@ -451,9 +431,7 @@ a:focus-visible {
     transition: transform var(--transition-standard);
 }
 
-.reference-card > a:hover img {
-    transform: scale(1.025);
-}
+.reference-card > a:hover img { transform: scale(1.025); }
 
 .reference-card > p {
     margin: 12px 14px;
@@ -483,7 +461,7 @@ a:focus-visible {
 
 
 /* 8. Collections
-   ================================================== */
+================================================== */
 
 .collection-create {
     max-width: 560px;
@@ -533,7 +511,7 @@ a:focus-visible {
 
 
 /* 9. Medium management
-   ================================================== */
+================================================== */
 
 .medium-create {
     max-width: 620px;
@@ -627,21 +605,15 @@ a:focus-visible {
 
 .medium-item__actions button:hover,
 .medium-item__edit-form button:hover,
-.medium-item__delete:hover {
-    color: var(--color-pink-dark);
-}
+.medium-item__delete:hover { color: var(--color-pink-dark); }
 
-.medium-item [hidden] {
-    display: none !important;
-}
+.medium-item [hidden] { display: none !important; }
 
 
 /* 10. Archive heading
-   ================================================== */
+================================================== */
 
-.archive--editorial {
-    padding-bottom: var(--section-space);
-}
+.archive--editorial { padding-bottom: var(--section-space); }
 
 .archive--editorial .archive-heading {
     padding: 38px 0 36px;
@@ -657,9 +629,7 @@ a:focus-visible {
     line-height: 1.08;
 }
 
-.archive--editorial .script-accent {
-    color: var(--color-pink-dark);
-}
+.archive--editorial .script-accent { color: var(--color-pink-dark); }
 
 .archive--editorial .archive-intro {
     max-width: 460px;
@@ -688,14 +658,11 @@ a:focus-visible {
     font-size: 19px;
 }
 
-.archive-create-link:hover {
-    color: var(--color-pink-dark);
-}
+.archive-create-link:hover { color: var(--color-pink-dark); }
 
 
-/* ==================================================
-   11. Archive search and filters
-   ================================================== */
+/* 11. Archive search and filters
+================================================== */
 
 .archive--editorial .archive-filters {
     display: grid;
@@ -796,9 +763,7 @@ a:focus-visible {
     list-style: none;
 }
 
-.archive-filter-details summary::-webkit-details-marker {
-    display: none;
-}
+.archive-filter-details summary::-webkit-details-marker { display: none; }
 
 .archive-filter-details summary span {
     color: var(--color-pink-dark);
@@ -806,9 +771,7 @@ a:focus-visible {
     transition: transform 200ms ease;
 }
 
-.archive-filter-details[open] summary span {
-    transform: rotate(45deg);
-}
+.archive-filter-details[open] summary span { transform: rotate(45deg); }
 
 .archive-filter-grid {
     display: grid;
@@ -851,23 +814,19 @@ a:focus-visible {
         margin: 22px 0 36px;
     }
 
-    .archive-search {
-        max-width: 100%;
-    }
+    .archive-search { max-width: 100%; }
 
     .archive-filter-details {
         grid-column: 1 / -1;
         grid-row: 2;
     }
 
-    .archive-filter-grid {
-        grid-template-columns: 1fr;
-    }
+    .archive-filter-grid { grid-template-columns: 1fr; }
 }
 
 
 /* 12. Archive toolbar
-   ================================================== */
+================================================== */
 
 .archive--editorial .archive-toolbar {
     display: flex;
@@ -877,9 +836,7 @@ a:focus-visible {
     margin-bottom: 26px;
 }
 
-.archive--editorial .archive-toolbar .eyebrow {
-    margin-bottom: 7px;
-}
+.archive--editorial .archive-toolbar .eyebrow { margin-bottom: 7px; }
 
 .archive--editorial .archive-toolbar h2 {
     margin: 0;
@@ -888,9 +845,7 @@ a:focus-visible {
     letter-spacing: -0.035em;
 }
 
-.archive-toolbar__period {
-    color: var(--color-pink-dark);
-}
+.archive-toolbar__period { color: var(--color-pink-dark); }
 
 .archive--editorial .result-count {
     padding-bottom: 5px;
@@ -900,7 +855,7 @@ a:focus-visible {
 
 
 /* 13. Inspiration-board layout
-   ================================================== */
+================================================== */
 
 .idea-board {
     display: grid;
@@ -918,18 +873,12 @@ a:focus-visible {
     border-radius: 3px;
     background: var(--color-surface);
     box-shadow: 0 3px 10px rgb(32 32 36 / 4%);
-    transition:
-        box-shadow 220ms ease,
-        transform 220ms ease;
+    transition: box-shadow 220ms ease, transform 220ms ease;
 }
 
-.idea-note:nth-child(3n + 2) {
-    transform: translateY(8px) rotate(0.25deg);
-}
+.idea-note:nth-child(3n + 2) { transform: translateY(8px) rotate(0.25deg); }
 
-.idea-note:nth-child(3n + 3) {
-    transform: translateY(3px) rotate(-0.25deg);
-}
+.idea-note:nth-child(3n + 3) { transform: translateY(3px) rotate(-0.25deg); }
 
 .idea-note:hover {
     z-index: 1;
@@ -952,13 +901,11 @@ a:focus-visible {
     font-weight: 600;
 }
 
-.idea-note__date {
-    text-align: right;
-}
+.idea-note__date { text-align: right; }
 
 
 /* 14. Inspiration images on cards
-   ================================================== */
+================================================== */
 
 .idea-note__images {
     display: grid;
@@ -983,9 +930,7 @@ a:focus-visible {
     height: 176px;
 }
 
-.idea-note__images:hover img {
-    filter: brightness(0.96);
-}
+.idea-note__images:hover img { filter: brightness(0.96); }
 
 .idea-note__image-placeholder {
     display: flex;
@@ -1014,17 +959,13 @@ a:focus-visible {
     font-size: 22px;
 }
 
-.idea-note__image-placeholder small {
-    font-size: 11px;
-}
+.idea-note__image-placeholder small { font-size: 11px; }
 
 
 /* 15. Card text and metadata
-   ================================================== */
+================================================== */
 
-.idea-note__body {
-    padding: 16px 15px 15px;
-}
+.idea-note__body { padding: 16px 15px 15px; }
 
 .idea-note__body h3 {
     margin: 0 0 9px;
@@ -1115,13 +1056,11 @@ a:focus-visible {
     font-size: 17px;
 }
 
-.idea-note__link:hover {
-    color: var(--color-pink-dark);
-}
+.idea-note__link:hover { color: var(--color-pink-dark); }
 
 
 /* 16. Empty archive
-   ================================================== */
+================================================== */
 
 .archive-empty {
     margin-top: 12px;
@@ -1146,7 +1085,7 @@ a:focus-visible {
 
 
 /* 17. Responsive layouts
-   ================================================== */
+================================================== */
 
 @media (max-width: 900px) {
     .idea-board {
@@ -1159,15 +1098,11 @@ a:focus-visible {
         gap: 18px;
     }
 
-    .archive-filter-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+    .archive-filter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 560px) {
-    .archive--editorial .archive-heading {
-        padding: 30px 0;
-    }
+    .archive--editorial .archive-heading { padding: 30px 0; }
 
     .archive--editorial .archive-heading h1 {
         font-size: clamp(42px, 11vw, 58px);
@@ -1179,51 +1114,33 @@ a:focus-visible {
         padding: 0;
     }
 
-    .idea-note:nth-child(n) {
-        transform: none;
-    }
+    .idea-note:nth-child(n) { transform: none; }
 
-    .idea-note:hover {
-        transform: translateY(-2px);
-    }
+    .idea-note:hover { transform: translateY(-2px); }
 
-    .idea-note__images img {
-        height: 165px;
-    }
+    .idea-note__images img { height: 165px; }
 
-    .idea-note__images img:only-child {
-        height: 210px;
-    }
+    .idea-note__images img:only-child { height: 210px; }
 
     .reference-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
 
-    .reference-form {
-        padding: 17px;
-    }
+    .reference-form { padding: 17px; }
 
-    .medium-create__controls {
-        flex-direction: column;
-    }
+    .medium-create__controls { flex-direction: column; }
 
-    .medium-item {
-        flex-wrap: wrap;
-    }
+    .medium-item { flex-wrap: wrap; }
 
-    .medium-item__edit-form {
-        flex-basis: 100%;
-    }
+    .medium-item__edit-form { flex-basis: 100%; }
 
-    .detail-actions {
-        align-items: flex-start;
-    }
+    .detail-actions { align-items: flex-start; }
 }
 
 
 /* 18. Reduced-motion preference
-   ================================================== */
+================================================== */
 
 @media (prefers-reduced-motion: reduce) {
     .button,

@@ -7,7 +7,7 @@
 <section class="archive archive--editorial">
 
     <header class="archive-heading">
-        <p class="eyebrow">WELCOME TO</p>
+        <p class="eyebrow"></p>
 
         <h1><span class="script-accent">My Personal Archive</span></h1>
 
@@ -19,7 +19,7 @@
             class="archive-create-link"
             href="{{ url_for('ideas.create_idea') }}"
         >
-            <span aria-hidden="true">+</span> New idea
+            <span aria-hidden="true">⟡</span> New idea
         </a>
     </header>
 
@@ -187,13 +187,13 @@
                                     role="img"
                                     aria-label="Color palette: {% for swatch in palette.colors %}{{ swatch.hex_code }}{% if not loop.last %}, {% endif %}{% endfor %}"
                                 >
-                                    {% for swatch in palette.colors[:8] %}
-                                        <span
-                                            class="idea-note__swatch"
-                                            data-color="{{ swatch.hex_code }}"
-                                            title="{{ swatch.hex_code }}"
-                                        ></span>
-                                    {% endfor %}
+                                {% for swatch in palette.colors[:8] %}
+                                    <span
+                                        class="idea-note__swatch"
+                                        style="background-color: {{ swatch.hex_code }};"
+                                        title="{{ swatch.hex_code }}"
+                                    ></span>
+                                {% endfor %}
                                 </div>
                             {% endif %}
                         {% endif %}
